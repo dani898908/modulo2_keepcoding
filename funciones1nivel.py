@@ -10,5 +10,7 @@ def  sumaTodos(limitTo, f):
          resultado += f(i)
 
      return resultado
-#print(sumaTodos(100, normal))
-#print(sumaTodos(3, cuadrado))
+
+if __name__== "__main__":
+    print(sumaTodos(100, normal))
+    print(sumaTodos(3, cuadrado))
