@@ -10,5 +10,5 @@ def  sumaTodos(limitTo, f):
          resultado += f(i)
 
      return resultado
-print(sumaTodos(100, normal))
-print(sumaTodos(3, cuadrado))
+#print(sumaTodos(100, normal))
+#print(sumaTodos(3, cuadrado))
