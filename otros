@@ -1,0 +1,31 @@
+ content: [ 
+          {
+            type: "fields",
+            fieldInfos: [
+              {
+                fieldName: "Ods_1",
+                label: "No Poverty"
+              },
+              {
+                fieldName: "Ods_2",
+                label: "Zero Hunger"
+              },
+              {
+                fieldName: "Ods_3",
+                label: "Good Health and Well-being"
+              },
+              {
+                fieldName: "Ods_4",
+                label: "Quality Education"
+              },
+              {
+                fieldName: "Ods_5",
+                label: "Gender Equality"
+              },
+              {
+                fieldName: "Ods_6",
+                label: "Clean Water and Sanitation"
+              }
+            ]
+          }
+        ],
