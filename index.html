@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <title>
+      Point clustering - basic configuration | Sample | ArcGIS API for
+      JavaScript 4.18
+    </title>
+
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(50, 50, 50);
+      }
+      .myPopup{
+      z-index: 2;
+      position: fixed;
+       overflow: auto;
+      align-items: center;
+      left: 950px;
+      top:85px;
+      width: 20%;
+      height: 60%;
+      background: #7c0d0da9;
+    }
+     
+    .flex-container {
+      height: 100%;
+      display: flex;
+      z-index: 1;
+      background-color: #fcf9f9;
+     
+    }
+
+    #viewDiv {
+      flex: 2;
+      padding: 0;
+      margin: 0;
+      z-index: 2;
+    }
+
+    .side-panel {
+      flex: 1;
+      padding: 1em;
+    
+      height: 50%;
+      width: 50%;
+    }
+
+    .container {
+      border-bottom: solid 1px rgb(209, 99, 99);
+    }
+
+    h3 {
+      color: #ffa500;
+    }
+
+    .esri-feature__title {
+      background-color: #faf6f61a;
+      padding: 0.25em;
+    }
+
+    .esri-feature__size-container {
+      background: #f7f4f400;
+    }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.18/esri/themes/dark-blue/main.css"
+    />
+    <script src="https://js.arcgis.com/4.18/"></script>
+
+    <script src="p.js"></script>
+ 
+  </head>
+
+  <body>
+    <div class="flex-container">
+        <div id="viewDiv"></div>
+      
+  </div>
+ 
+  <div class="myPopup"> 
+      <div class="myPopup" class="esri-widget side-panel">
+         <div class="myPopup" id="features" class="feature-container"> </div>
+         <div class="myPopup" id="resultado" class="feature-container"> </div>
+      </div>
+    </div>
+    
+    <!-- <div id="infoDiv" class="esri-widget">
+      <button id="cluster" class="esri-button">Disable Clustering</button>
+      <div id="legendDiv"></div>
+    </div> -->
+    <script src="urlIndicadoresDinamicos.jsonp"></script>
+  </body>
+</html>
