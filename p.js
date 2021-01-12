@@ -24,7 +24,7 @@ require([
     const layer = new GeoJSONLayer({
       title: "Earthquakes from the last month",
       url:
-        "https://raw.githubusercontent.com/dani898908/modulo2_keepcoding/main/ciudades_ods_FeaturesToJSON.geojson",
+        "https://raw.githubusercontent.com/dani898908/modulo2_keepcoding/main/nuevo.geojson",
       copyright: "ODS Ciudades de España",
       outFields: ['*'],
       renderer: {
