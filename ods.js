@@ -1,22 +1,68 @@
-miCallback([{
-   
+[{
+    "goal": 1,
     "title": "End poverty in all its forms everywhere",
     "short": "No Poverty",
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_1.png"
+    "colorInfo": {
+      "hex": "#e5243b",
+      "rgb": [
+        229,
+        36,
+        59
+      ]
+    },
+    "keywords": {
+      "tags": [
+        "poverty"
+      ],
+      "descriptions": [
+        "extreme poverty",
+        "basic standard of living",
+        "social protection"
+      ],
+      "groups": [
+        "poorest",
+        "vulnerable"
+      ]
+    },
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_1.png"
   },
   {
-  
+    "goal": 2,
     "title": "End hunger, achieve food security and improved nutrition and promote sustainable agriculture",
     "short": "Zero Hunger",
-    
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_2.png"
+    "colorInfo": {
+      "hex": "#e5b735",
+      "rgb": [
+        229,
+        183,
+        53
+      ]
+    },
+    "keywords": {
+      "tags": ["hunger", "food security", "nutrition", "sustainable agriculture"],
+      "descriptions": ["malnutrition", "food production", "agricultural productivity", "agricultural investments", "food markets"],
+      "groups": []
+    },
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_2.png"
   },
   {
-    
+    "goal": 3,
     "title": "Ensure healthy lives and promote well-being for all at all ages",
     "short": "Good Health and Well-being",
-    
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_3.png"
+    "colorInfo": {
+      "hex": "#4c9f38",
+      "rgb": [
+        76,
+        159,
+        56
+      ]
+    },
+    "keywords": {
+      "tags": ["health", "well-being"],
+      "descriptions": ["reproductive health", "maternal health", "child health", "epidemics", "communicable diseases", "non-communicable diseases", "environmental diseases", "universal health coverage", "medicines", "vaccines"],
+      "groups": ["women", "children"]
+    },
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_3.png"
   },
   {
     "goal": 4,
@@ -35,7 +81,7 @@ miCallback([{
       "descriptions": ["skills", "technical education", "vocational educaiton", "training", "higher education", "knowledge", "values"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_4.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_4.png"
   },
   {
     "goal": 5,
@@ -54,8 +100,8 @@ miCallback([{
       "descriptions": ["women empowerment", "girls empowerment", "discrimination against women", "violence against women", "sexual health", "reproductive health", "reproductive rights", "unpaid work", "access to productive resources", "equal participation", "political life", "economic life", "public life"],
       "groups": ["women", "girls"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_5.png"
-  
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_5.png"
+
   },
   {
     "goal": 6,
@@ -74,7 +120,7 @@ miCallback([{
       "descriptions": ["drinking water", "hygiene", "water resources", "water management", "sanitation management"],
       "groups": ["international cooperation", "local communities"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_6.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_6.png"
   },
   {
     "goal": 7,
@@ -93,7 +139,7 @@ miCallback([{
       "descriptions": ["energy access", "renewable energy"],
       "groups": ["international cooperation"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_7.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_7.png"
   },
   {
     "goal": 8,
@@ -112,7 +158,7 @@ miCallback([{
       "descriptions": ["forced labour", "human trafficking", "child labour"],
       "groups": ["children"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_8.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_8.png"
   },
   {
     "goal": 9,
@@ -131,7 +177,7 @@ miCallback([{
       "descriptions": ["research", "technology", "technical support", "ICT", "information and communication technology"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_9.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_9.png"
   },
   {
     "goal": 10,
@@ -150,7 +196,7 @@ miCallback([{
       "descriptions": ["income", "sex", "age", "disability", "race", "class", "ethnicity", "religion", "migration", "development assistance"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_10.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_10.png"
   },
   {
     "goal": 11,
@@ -169,7 +215,7 @@ miCallback([{
       "descriptions": ["community cohesion", "personal security", "innovation", "employment"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_11.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_11.png"
   },
   {
     "goal": 12,
@@ -188,7 +234,7 @@ miCallback([{
       "descriptions": ["toxic materials", "environment"],
       "groups": ["international agreements"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_12.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_12.png"
   },
   {
     "goal": 13,
@@ -207,7 +253,7 @@ miCallback([{
       "descriptions": ["resilience", "natural disasters"],
       "groups": ["poorest", "vulnerable"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_13.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_13.png"
   },
   {
     "goal": 14,
@@ -226,7 +272,7 @@ miCallback([{
       "descriptions": ["marine ecosystems", "coastal ecosystems", "marine pollution"],
       "groups": ["small islands developing States", "SIDS", "least developed countries", "LDCs"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_14.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_14.png"
   },
   {
     "goal": 15,
@@ -245,7 +291,7 @@ miCallback([{
       "descriptions": ["degraded lands", "forest management", "natural habitats"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_15.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_15.png"
   },
   {
     "goal": 16,
@@ -264,7 +310,7 @@ miCallback([{
       "descriptions": ["human rights", "rule of law", "violence", "armed conflict", "weak institutions"],
       "groups": []
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_16.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_16.png"
   },
   {
     "goal": 17,
@@ -283,6 +329,6 @@ miCallback([{
       "descriptions": ["resource mobilization"],
       "groups": ["developing countries", "LDCs"]
     },
-    "img": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_17.png"
+    "icon_url": "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_17.png"
   }
-  ])
+]

@@ -1,6 +1,5 @@
-micallback([{
-    "pageProps": {
-        "cities": [{
+miCallback([{
+    
             "id": "la-coruna",
             "name": "A Coruña",
             "score": "yellow",
@@ -5808,7 +5807,7 @@ micallback([{
             "region": "País Vasco",
             "sdgs": [{
                 "rating": "grey",
-                "score": null
+                "score": null   
             }, {
                 "rating": "orange",
                 "score": 21.32
@@ -5977,5 +5976,4 @@ micallback([{
         }]
     },
     "__N_SSG": true
-}
-])
+}])

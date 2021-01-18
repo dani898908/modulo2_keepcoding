@@ -26,9 +26,9 @@
       overflow: auto;
       align-items: center;
       right: 700px;
-      top:300px;
+      top:10px;
       width: 45%;
-      height: 50%;
+      height: 100%;
       background: #cfc4c409;
       
     }
@@ -40,7 +40,14 @@
       background-color: #fcf9f9;
      
     }
-
+    #optionsDiv {
+        position: absolute;
+        bottom: 17px;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 6;
+        text-align: center;
+      }
     #viewDiv {
       flex: 2;
       padding: 0;
@@ -110,16 +117,56 @@
     text-align: center;
 
 }
+div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shadow > div.esri-popup__main-container.esri-widget.esri-popup--is-collapsible
+
+        {
+        --esri-calcite-theme-name: "dark-blue";
+        -webkit-tap-highlight-color: transparent;
+        color: #aa4c16;
+        font-size: 14px;
+        font-family: "Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
+        line-height: 1.3em;
+        pointer-events: auto;
+        position: relative;
+        z-index: 1;
+        background-color: #ffffff00;
+        display: flex;
+        flex-flow: column nowrap;
+        width: 340px;
+        max-height: 450px;
+        }
+         button {
+        background: white;
+        padding: 7px;
+        border: 1px solid #005e95;
+        font-size: 0.9em;
+        margin: 5px;
+        color: #005e95;
+      }
+
+      button:hover {
+        background: #005e95;
+        color: white;
+        cursor: pointer;
+      }
     </style>
     <script >
       var app={};
       var miCallback= datos=>{
       console.log(datos);
       app.itemI= datos;
-      
       }
       </script>
+      <script type="text/javascript">
 
+var app={};
+      var micallback= datos=>{
+      console.log(datos);
+      app.indicadores= datos;
+      }               
+          
+    
+    </script>
 
     <link
       rel="stylesheet"
@@ -127,8 +174,9 @@
     />
     <script src="https://js.arcgis.com/4.18/"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
-    <!-- <script src="p.js"></script> -->
-    <script src="itemI.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script> 
+    <script src="itemI.js"></script>
+    <script src="indicadores.json"></script>
     <script>
       require([
       "esri/Map",
@@ -136,7 +184,9 @@
       "esri/layers/GeoJSONLayer",
       "esri/views/MapView",
       "esri/widgets/Home",
-      "esri/core/Handles"
+      "esri/core/Handles",
+      "esri/WebMap",
+      "esri/views/SceneView"
   
     ], function (
       Map,
@@ -145,14 +195,12 @@
       MapView,
       Home,
       Handles,
+      WebMap,
+      SceneView
     
     ) {
   
-      let handles = new Handles();
-  
-      handles.remove(); // removes handles from default group
-      
-      handles.remove("layer");
+    
       const layer = new GeoJSONLayer({
         title: "Earthquakes from the last month",
         url:
@@ -182,7 +230,7 @@
           outFields: ['*'],
           actions: [
             {
-              id: "find-brewery",
+              id: "line-button",
               image:
                 "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_3.png",
               title: "Más Info"
@@ -253,58 +301,156 @@
           }
         }
       });
+      var webmap = new WebMap({
+          portalItem: {
+            // autocasts as new PortalItem()
+            id: "4a1360396d4a40969ab9a4e0e1f4cfae"
+          }
+        });
       const map = new Map({
           basemap: "dark-gray-vector",
-        layers: [  baseLayer,layer]
+        layers: [ baseLayer,layer]
       });
-  
-      const view = new MapView({
+     
+      const view = new SceneView({
         container: "viewDiv",
-        zoom: 4.8,
-        center: [-15.7254,38.5302], 
+        zoom: 5,
+        // center: [-15.7254,38.5302], 
         map: map,
         highlightOptions: {
-          color: "orange"
-        }
+          color: "orange",
+            haloOpacity: 0.65,
+            fillOpacity: 0.45
+          }
       });
-      view.ui.add("imgLogo", "top-left");
-    
+   
+      view.ui.add("imgLogo", "bottom-right");
+
       view.when().then(function () {
         view.on("click", function (event) {
-            // Remove any existing highlighted features
-            handles.removeAll();
-            const featureContainer = document.getElementById("features");
-           
-            // Clears the parent div's content
-            app.itemI.map(item=>{
-            featureContainer.innerHTML += "<img height='50px'src='"+item.img+"'></img>";
-            for (var clave of Object.keys(item)){
-              featureContainer.innerHTML+="<ol>"+item[clave]+"</ol>";
-              }
-                })
           
-        });
+          const isObject= function(val){
+                  if(val === null){
+                    return false;
+                  }
+                  return (typeof val === 'object')
+              }; 
+              const objProps = function(obj){
+                for(var val in miCallback){
+                  if(isObject(miCallback[val][0])){
+                    for(var val2 in miCallback[val]){
+                      var items=miCallback[val][val2]["properties"];
+                    
+                      const featureContainer = document.getElementById("features");
+                 
+                     
+                    featureContainer.innerHTML += "<ol>"+items.Ods_1+"</ol>"
+                //   // featureContainer.innerHTML += "<a Target='_blank' href='"+item.goal_meta_link+"' download><img height='40px'src='"+item.img+"'></img></a>";
+                //   featureContainer.scrollTop = featureContainer.scrollHeight;
+                //       }
+                //   // for (var clave of Object.keys(item)){
+                //   //   if(NOMBRE === name){
+                 app.indicadores.map(itemIndica=>{
+                
+                    featureContainer.innerHTML+="<ol>"+itemIndica.rank+"</ol>";
+                    console.log(itemIndica.rank)
+                  
+                  })
+                
+                
+                
+                     
+                    }
+                  }
+
+                }
+                }  
+                objProps(miCallback)  
+                
+                   
+         })   
+               
       });
-    
-  
-    });
+       $(document).ready(function(){
+         $('#imgLogo').click(
+           function(){
+             $('.myPopup').toggle("swing");
+           }
+         )
+       });
+       function catchAbortError(error) {
+          if (error.name != "AbortError") {
+            console.error(error);
+          }
+        }
+       function customEasing(t) {
+          return (
+            1 -
+            Math.abs(Math.sin(-1.7 + t * 4.5 * Math.PI)) * Math.pow(0.5, t * 10)
+          );
+        }
+       document.getElementById("bounceBerlin").addEventListener("click", function () {
+            view
+              .goTo(
+                {
+                  position: {
+                    x: -10.4,
+                    y: 40.52,
+                    z: 7000000,
+                
+                  },
+                  heading: 0,
+                  tilt: 0
+                },
+                {
+                  speedFactor: 0.3,
+                  easing: customEasing
+                }
+              )
+              .catch(catchAbortError);
+          });
+          document.getElementById("bounceBerlin1").addEventListener("click", function () {
+            view
+              .goTo(
+                {
+                  position: {
+                    x: 17.24,
+                    y: 32.44,
+                    z: 9000000, 
+                  },
+                  heading: 0,
+                  tilt: 0
+                },
+                {
+                  speedFactor: 0.3,
+                  easing: customEasing
+                }
+              )
+              .catch(catchAbortError);
+          });
+        });
         </script>
   </head>
 
   <body>
     <div class="flex-container">
         <div id="viewDiv"></div>
-      
+        
   </div>
- 
+
   <div class="myPopup"> 
       <div class="myPopup" class="esri-widget side-panel">
          <div class="myPopup" id="features" class="feature-container"> </div>
-         <div class="myPopup" id="resultado" class="feature-container"> </div>
-         <div   id="imgLogo" class="esri-widget"><img src="http://mexico.makesense.org/wp-content/uploads/2019/10/ods_circulo-ch-25oi37-300x293.png" height="250px" alt=""></div>
-      </div>
+         <div    class="esri-widget"><h1 class="ods">Grado de cumplimiento del ODS </h1><img  id="imgLogo" src="http://mexico.makesense.org/wp-content/uploads/2019/10/ods_circulo-ch-25oi37-300x293.png" height="200px" alt=""></div>
+      </div>  
     </div>
-   <button type= 'button'  id="ruta" class='ods1'>Desactivar Ciudades</button>
-  <h1 class="ods">Grado de cumplimiento del ODS </h1>
+   
+   <div id="optionsDiv">
+    
+    <button id="bounceBerlin">¡Empieza !</button>
+    <button id="bounceBerlin1">otras paradas</button>
+    <button  id="ruta" >Desactivar Ciudades</button>
+   
+  </div>
   </body>
 </html>
