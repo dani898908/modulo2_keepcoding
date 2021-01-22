@@ -6,9 +6,15 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
+<<<<<<< HEAD
 
     <title>ODS España</title>
 
+=======
+    <title>
+     ODS España
+    </title>
+>>>>>>> 59243f213790fa6a5f503c6006548bd588bf977e
     <style>
       html,
       body {
@@ -18,6 +24,7 @@
         width: 100%;
         background: rgba(50, 50, 50);
       }
+<<<<<<< HEAD
       .myPopup {
         z-index: 2;
         position: fixed;
@@ -37,6 +44,28 @@
         background-color: #fcf9f9;
       }
       #optionsDiv {
+=======
+      .myPopup{
+      z-index: 2;
+      position: fixed;
+      overflow: auto;
+      align-items: center;
+      right: 700px;
+      top:10px;
+      width: 45%;
+      height: 100%;
+      background: #cfc4c409;
+      
+    }
+    .flex-container {
+      height: 100%;
+      display: flex;
+      z-index: 1;
+      background-color: #fcf9f9;
+     
+    }
+    #optionsDiv {
+>>>>>>> 59243f213790fa6a5f503c6006548bd588bf977e
         position: absolute;
         bottom: 17px;
         width: 100%;
@@ -63,9 +92,49 @@
         border-bottom: solid 1px rgb(209, 99, 99);
       }
 
+<<<<<<< HEAD
       h3 {
         color: #ffa500;
       }
+=======
+    .esri-feature__size-container {
+      background: #f7f4f400;
+    }
+    #imgLogo{
+     
+      margin-top: -80px;
+      margin-left: 70px;
+      z-index: 5;
+      background-color: #faf8f800;
+    }
+    .ods1{
+    z-index: 5;
+    margin-top: -500px;
+    margin-right: -2700px;
+    right: 2750px;
+    background-color:rgba(0, 139, 174, 0.5);
+    color: rgb(244, 246, 248);
+    position: absolute;
+    border: 1px solid #616060;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial';
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    
+}
+.ods{
+  z-index: 5;
+    margin-top: -349px;
+    margin-right: -1675px;
+    right: 2750px;
+    background-color:rgba(44, 46, 46, 0.062);
+    color: rgb(244, 246, 248);
+    position: absolute;
+    font-size:15px ;
+    font-family: 'Arial';
+    text-align: center;
+>>>>>>> 59243f213790fa6a5f503c6006548bd588bf977e
 
       .esri-feature__title {
         background-color: #faf6f61a;
@@ -291,6 +360,7 @@
         });
         const map = new Map({
           basemap: "dark-gray-vector",
+<<<<<<< HEAD
           layers: [baseLayer, layer],
         });
 
@@ -325,6 +395,59 @@
                     const featureContainer = document.getElementById(
                       "features"
                     );
+=======
+        layers: [ baseLayer,layer]
+      });
+      const view = new SceneView({
+        container: "viewDiv",
+        zoom: 5,
+        // center: [-15.7254,38.5302], 
+        map: webmap,
+        highlightOptions: {
+          color: "orange",
+            haloOpacity: 0.65,
+            fillOpacity: 0.45
+          }
+      });
+   
+      view.ui.add("imgLogo", "bottom-right");
+      view.when().then(function () {
+        view.on("click", function (event) {
+          
+          const isObject= function(val){
+                  if(val === null){
+                    return false;
+                  }
+                  return (typeof val === 'object')
+              }; 
+              const objProps = function(obj){
+                for(var val in miCallback){
+                  if(isObject(miCallback[val][0])){
+                    for(var val2 in miCallback[val]){
+                      var items=miCallback[val][val2]["properties"];
+                    
+                      const featureContainer = document.getElementById("features");
+                 
+                     
+                    featureContainer.innerHTML += "<ol>"+items.Ods_1+"</ol>"
+                //   // featureContainer.innerHTML += "<a Target='_blank' href='"+item.goal_meta_link+"' download><img height='40px'src='"+item.img+"'></img></a>";
+                //   featureContainer.scrollTop = featureContainer.scrollHeight;
+                //       }
+                //   // for (var clave of Object.keys(item)){
+                //   //   if(NOMBRE === name){
+                 app.indicadores.map(itemIndica=>{
+                
+                    featureContainer.innerHTML+="<ol>"+itemIndica.rank+"</ol>";
+                    console.log(itemIndica.rank)
+                  
+                  })
+                
+                
+                
+                     
+                    }
+                  }
+>>>>>>> 59243f213790fa6a5f503c6006548bd588bf977e
 
                     featureContainer.innerHTML +=
                       "<ol>" + items.Ods_1 + "</ol>";
