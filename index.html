@@ -311,7 +311,6 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
           basemap: "dark-gray-vector",
         layers: [ baseLayer,layer]
       });
-     
       const view = new SceneView({
         container: "viewDiv",
         zoom: 5,
@@ -325,7 +324,6 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
       });
    
       view.ui.add("imgLogo", "bottom-right");
-
       view.when().then(function () {
         view.on("click", function (event) {
           
