@@ -325,6 +325,36 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
       });
    
       view.ui.add("imgLogo", "bottom-right");
+      function getInfo(feature) {
+    view.graphics.removeAll()
+
+    var graphic, attributes, content;
+
+    graphic = feature.graphic;
+    attributes = graphic.attributes;
+    console.log('grafic', graphic)
+    console.log('attributes', attributes)
+    console.log('layerRutaM', layerRutaM)
+    var urlRutas = 'https://raw.githubusercontent.com/dani898908/ods/main/indicadores.json';
+    // Se inicia la peticion a la url ruta
+    var request = new XMLHttpRequest();
+    request.open("GET", urlRutas, false); // false for synchronous request
+    request.send(null);
+    let rutas = JSON.parse(request.responseText)
+    console.log('obj ruta', rutas)
+
+    for (let index = 0; index < rutas.length; index++) {
+      const element = rutas[index];
+      console.log('element', element)
+      if (element.name == attributes.NOMBRE) {
+     
+      }
+
+    }
+    content = "Comarca: " + attributes.NOMBRE;
+     console.log(content)
+    return content;
+  }
 
     
        $(document).ready(function(){
