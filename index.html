@@ -150,7 +150,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
         cursor: pointer;
       }
     </style>
-    <script >
+    <!-- <script >
       var app={};
       var miCallback= datos=>{
       console.log(datos);
@@ -166,7 +166,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
       }               
           
     
-    </script>
+    </script> -->
 
     <link
       rel="stylesheet"
@@ -326,51 +326,32 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
    
       view.ui.add("imgLogo", "bottom-right");
 
-      view.when().then(function () {
-        view.on("click", function (event) {
-          
-          const isObject= function(val){
-                  if(val === null){
-                    return false;
-                  }
-                  return (typeof val === 'object')
-              }; 
-              const objProps = function(obj){
-                for(var val in miCallback){
-                  if(isObject(miCallback[val][0])){
-                    for(var val2 in miCallback[val]){
-                      var items=miCallback[val][val2]["properties"];
-                    
-                      const featureContainer = document.getElementById("features");
-                 
-                     
-                    featureContainer.innerHTML += "<ol>"+items.Ods_1+"</ol>"
-                //   // featureContainer.innerHTML += "<a Target='_blank' href='"+item.goal_meta_link+"' download><img height='40px'src='"+item.img+"'></img></a>";
-                //   featureContainer.scrollTop = featureContainer.scrollHeight;
-                //       }
-                //   // for (var clave of Object.keys(item)){
-                //   //   if(NOMBRE === name){
-                 app.indicadores.map(itemIndica=>{
-                
-                    featureContainer.innerHTML+="<ol>"+itemIndica.rank+"</ol>";
-                    console.log(itemIndica.rank)
-                  
-                  })
-                
-                
-                
-                     
-                    }
-                  }
+  //     function getInfo(feature) {
+  //   view.graphics.removeAll()
 
-                }
-                }  
-                objProps(miCallback)  
-                
-                   
-         })   
-               
-      });
+  //   var graphic, attributes, content;
+
+  //   graphic = feature.graphic;
+  //   attributes = graphic.attributes;
+  //   console.log('grafic', graphic)
+  //   console.log('attributes', attributes)
+  //   console.log('layerRutaM', layerRutaM)
+  //   var urlRutas = 'https://raw.githubusercontent.com/Carlos29Blanco/Carlos29Blanco/develop/aviarRutas.geojson';
+  //   // Se inicia la peticion a la url ruta
+  //   var request = new XMLHttpRequest();
+  //   request.open("GET", urlRutas, false); // false for synchronous request
+  //   request.send(null);
+  //   let rutas = JSON.parse(request.responseText)
+  //   console.log('obj ruta', rutas)
+
+  //   for (let index = 0; index < rutas.features.length; index++) {
+  //     const element = rutas.features[index];
+  //     console.log('element', element)
+  //     if (element.properties.idAlerta == attributes.comarca_sg) {
+       
+  //   return content;
+  // }
+    
        $(document).ready(function(){
          $('#imgLogo').click(
            function(){

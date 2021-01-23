@@ -1,4 +1,4 @@
-micallback([{
+{
     "pageProps": {
         "cities": [{
             "id": "la-coruna",
@@ -5978,4 +5978,3 @@ micallback([{
     },
     "__N_SSG": true
 }
-])
