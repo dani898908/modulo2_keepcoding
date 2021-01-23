@@ -1,5 +1,5 @@
 {
-    "pageProps": {
+    "pageProps": "ods",
         "cities": [{
             "id": "la-coruna",
             "name": "A Coruña",
@@ -5975,6 +5975,5 @@
                 "score": 87.86
             }]
         }]
-    },
-    "__N_SSG": true
+   
 }

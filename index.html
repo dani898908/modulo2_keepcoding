@@ -150,7 +150,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
         cursor: pointer;
       }
     </style>
-    <!-- <script >
+    <script >
       var app={};
       var miCallback= datos=>{
       console.log(datos);
@@ -166,7 +166,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
       }               
           
     
-    </script> -->
+    </script>
 
     <link
       rel="stylesheet"
@@ -326,31 +326,6 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
    
       view.ui.add("imgLogo", "bottom-right");
 
-  //     function getInfo(feature) {
-  //   view.graphics.removeAll()
-
-  //   var graphic, attributes, content;
-
-  //   graphic = feature.graphic;
-  //   attributes = graphic.attributes;
-  //   console.log('grafic', graphic)
-  //   console.log('attributes', attributes)
-  //   console.log('layerRutaM', layerRutaM)
-  //   var urlRutas = 'https://raw.githubusercontent.com/Carlos29Blanco/Carlos29Blanco/develop/aviarRutas.geojson';
-  //   // Se inicia la peticion a la url ruta
-  //   var request = new XMLHttpRequest();
-  //   request.open("GET", urlRutas, false); // false for synchronous request
-  //   request.send(null);
-  //   let rutas = JSON.parse(request.responseText)
-  //   console.log('obj ruta', rutas)
-
-  //   for (let index = 0; index < rutas.features.length; index++) {
-  //     const element = rutas.features[index];
-  //     console.log('element', element)
-  //     if (element.properties.idAlerta == attributes.comarca_sg) {
-       
-  //   return content;
-  // }
     
        $(document).ready(function(){
          $('#imgLogo').click(
