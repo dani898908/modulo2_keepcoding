@@ -10,7 +10,7 @@
     <title>
      ODS España
     </title>
-
+    
     <style>
       html,
       body {
@@ -25,13 +25,20 @@
       position: fixed;
       overflow: auto;
       align-items: center;
-      right: 700px;
+      right:800px;
       top:10px;
-      width: 45%;
+      width: 50%;
       height: 100%;
-      background: #cfc4c409;
+      background: #f0ebeb10;
       
     }
+    .chart-container {
+    
+  
+      height: 50%;
+      width: 65%;
+    }
+    
      
     .flex-container {
       height: 100%;
@@ -150,33 +157,16 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
         cursor: pointer;
       }
     </style>
-    <script >
-      var app={};
-      var miCallback= datos=>{
-      console.log(datos);
-      app.itemI= datos;
-      }
-      </script>
-      <script type="text/javascript">
-
-       var app={};
-      var micallback= datos=>{
-      console.log(datos);
-      app.indicadores= datos;
-      }               
-          
-    
-    </script>
-
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.18/esri/themes/dark-blue/main.css"
     />
     <script src="https://js.arcgis.com/4.18/"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script> 
-    <script src="itemI.js"></script>
-    <script src="indicadores.json"></script>
+   
     <script>
       require([
       "esri/Map",
@@ -207,11 +197,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
           "https://raw.githubusercontent.com/dani898908/modulo2_keepcoding/main/nuevo.geojson",
         copyright: "ODS Ciudades de España",
         outFields: ['*'],
-        popupTemplate: {
-          title: "{name}",
-          lastEditInfoEnabled: false,
-        
-        },
+        visible: true,
         renderer: {
           type: "simple",
           field: "NOMBRE",
@@ -225,82 +211,99 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
             }
           }
         },
-        popupTemplate: {
-          title: " Informe cumplimiento ODS {NOMBRE}",
-          outFields: ['*'],
-          actions: [
-            {
-              id: "line-button",
-              image:
-                "https://raw.githubusercontent.com/UNStats-SDGs/sdgs-data/master/images/en/TGG_Icon_Color_3.png",
-              title: "Más Info"
-            }
-          ],
-          content: [ 
-            {
-              type: "fields",
-              fieldInfos: [
-                {
-                  fieldName: "Ods_1",
-                  label: "No Poverty"
-                },
-                {
-                  fieldName: "Ods_2",
-                  label: "Zero Hunger"
-                },
-                {
-                  fieldName: "Ods_3",
-                  label: "Good Health and Well-being"
-                },
-                {
-                  fieldName: "Ods_4",
-                  label: "Quality Education"
-                },
-                {
-                  fieldName: "Ods_5",
-                  label: "Gender Equality"
-                },
-                {
-                  fieldName: "Ods_6",
-                  label: "Clean Water and Sanitation"
-                }
-              ]
-            }
-          ],cambiar
-        },
-        visible: true,
-      });
-      window.onload= function (){
-        document.getElementById("ruta").addEventListener("click",cambiar);
-       
-      }
-    
-      function cambiar(feature){
-       if(layer.visible === true){
-         return layer.visible = false;
-       }else{
-         return layer.visible= true;
-       }
         
-      }
-      const baseLayer = new FeatureLayer({
-        portalItem: {
-          id: "2b93b06dc0dc4e809d3c8db5cb96ba69"
-        },
-        legendEnabled: false,
-        popupEnabled: false,
-        renderer: {
-          type: "simple",
-          symbol: {
-            type: "simple-fill",
-            color: [65, 65, 65, 1],
-            outline: {
-              color: [50, 50, 50, 0.75],
-              width: 1
+      supportsQuery: true,
+      popupTemplate: {
+      title: "NOMBRE",
+      content: getInfo,
+      returnGeometry: true,
+          },
+        
+      });
+     
+      const ctx = document.getElementById('myChart').getContext('2d');
+       const xlabels=["No Poverty","Zero Hunger","Good Health and Well-being","Gender Equality","Clean Water and Sanitation","Affordable and Clean Energy",
+       "Decent Jobs and Economic Growth","Industry, Innovation and Infrastructure","Reduced Inequalities","Sustainable Cities and Communities","Responsible Consumption and Production","Climate Action","Life Below Water","Life on Land","Peace and Justice - Strong Institutions","Partnerships for the Goals",];
+       const yPuntaje=[3.5,5,8,5,8,7,9,6,4,8,7,3,2,4,8,5,9];
+
+           
+      function getInfo(feature) {
+        view.graphics.removeAll()
+        graphic = feature.graphic;
+        attributes = graphic.attributes;
+        console.log('grafic', graphic)
+        console.log('attributes', attributes)
+        console.log('layerRutaM', layer)
+        var graphic, attributes, content;
+        graphic = feature.graphic;
+        attributes = graphic.attributes;
+    
+      
+        // Se inicia la peticion a la url ruta
+        var request = new XMLHttpRequest();
+        request.open("GET",'https://raw.githubusercontent.com/dani898908/ods/main/indicadores.json' ); // false for synchronous request
+        request.onload = datta => {
+          let data=JSON.parse(request.responseText)
+          console.log('obj data', data.cities)
+          ctx .scrollTop = ctx .scrollHeight; 
+          for(let index = 0; index < data.cities.length; index++) {
+            const element = data.cities[index];
+            if (element.name === attributes.NOMBRE) {
+               
+                var myChart = new Chart(ctx, {
+                    type: 'polarArea',
+                    data: {
+                        labels:   xlabels,
+                        datasets: [{
+                            label: 'puntajes ods',
+
+                            backgroundColor: ['#cc65fe',
+                            '#ff6384','#36a2eb',"#e5243b",'#e5b735',"yellow","red"],
+                            borderColor: ['rgba(255, 255, 255'],
+                            borderWidth: 1,
+                            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                            hoverBorderColor: "rgba(255,99,132,1)",
+                            data:  yPuntaje
+                        }]
+                  },
+              options: {
+                maintainAspectRatio: false,
+                cutoutPercentage: 35
+                
+              }
+                
+                });
             }
           }
         }
-      });
+         request.send();
+      
+
+       
+      
+        content = 'Comarca: ' + attributes.NOMBRE;
+        return content;
+  }
+
+
+       const baseLayer = new FeatureLayer({
+         portalItem: {
+           id: "2b93b06dc0dc4e809d3c8db5cb96ba69"
+         },
+         legendEnabled: false,
+         popupEnabled: false,
+         renderer: {
+           type: "simple",
+           symbol: {
+             type: "simple-fill",
+             color: 'rgba(44, 46, 46, 0.062)',
+             outline: {
+               color: [50, 50, 50, 0.5],
+               width: 1
+             }
+           }
+         }
+       });
       var webmap = new WebMap({
           portalItem: {
             // autocasts as new PortalItem()
@@ -309,14 +312,14 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
         });
       const map = new Map({
           basemap: "dark-gray-vector",
-        layers: [ baseLayer,layer]
+        layers: [baseLayer,layer]
       });
      
       const view = new SceneView({
         container: "viewDiv",
         zoom: 5,
         // center: [-15.7254,38.5302], 
-        map: webmap,
+        map: map,
         highlightOptions: {
           color: "orange",
             haloOpacity: 0.65,
@@ -325,37 +328,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
       });
    
       view.ui.add("imgLogo", "bottom-right");
-      function getInfo(feature) {
-    view.graphics.removeAll()
-
-    var graphic, attributes, content;
-
-    graphic = feature.graphic;
-    attributes = graphic.attributes;
-    console.log('grafic', graphic)
-    console.log('attributes', attributes)
-    console.log('layerRutaM', layerRutaM)
-    var urlRutas = 'https://raw.githubusercontent.com/dani898908/ods/main/indicadores.json';
-    // Se inicia la peticion a la url ruta
-    var request = new XMLHttpRequest();
-    request.open("GET", urlRutas, false); // false for synchronous request
-    request.send(null);
-    let rutas = JSON.parse(request.responseText)
-    console.log('obj ruta', rutas)
-
-    for (let index = 0; index < rutas.length; index++) {
-      const element = rutas[index];
-      console.log('element', element)
-      if (element.name == attributes.NOMBRE) {
      
-      }
-
-    }
-    content = "Comarca: " + attributes.NOMBRE;
-     console.log(content)
-    return content;
-  }
-
     
        $(document).ready(function(){
          $('#imgLogo').click(
@@ -416,6 +389,7 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
           });
         });
         </script>
+        
   </head>
 
   <body>
@@ -426,7 +400,8 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
 
   <div class="myPopup"> 
       <div class="myPopup" class="esri-widget side-panel">
-         <div class="myPopup" id="features" class="feature-container"> </div>
+         <div class="chart-container" class="myPopup" id="features" class="feature-container"> </div>
+         <canvas id="myChart"></canvas>
          <div    class="esri-widget"><h1 class="ods">Grado de cumplimiento del ODS </h1><img  id="imgLogo" src="http://mexico.makesense.org/wp-content/uploads/2019/10/ods_circulo-ch-25oi37-300x293.png" height="200px" alt=""></div>
       </div>  
     </div>
@@ -438,5 +413,8 @@ div.esri-component.esri-popup.esri-popup--aligned-bottom-center.esri-popup--shad
     <button  id="ruta" >Desactivar Ciudades</button>
    
   </div>
+  <script>
+   
+    </script>
   </body>
 </html>
